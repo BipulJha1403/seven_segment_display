@@ -1,0 +1,43 @@
+def countmatch(n):
+    matches = 0
+    if n == 0:
+        return 6
+    else:
+        while n!=0:
+            digi = n%10
+        
+            if digi == 1:
+                matches = matches+2
+            elif digi == 2 or digi == 3 or digi == 5:
+                matches = matches+5
+            elif digi == 4:
+                matches = matches+4
+            elif digi == 0 or digi == 9 or digi == 6:
+                matches == matches+6
+            elif digi == 7:
+                matches = matches+3
+            else:
+                matches = matches+7
+        
+            n = n//10
+    
+        return matches
+
+
+T = int(input())
+arr = []
+while T>0:
+    N = int(input())
+    cnt = countmatch(N)
+    print(cnt)
+    arr.append(cnt)
+    T = T-1
+for cnt in arr:
+    if cnt%2 == 0:
+        for i in range(int(cnt/2)):
+            print(1, end='')
+    else:
+        print(7, end='')
+        for i in range(int((cnt-3)/2)):
+            print(1, end='')
+    print()
